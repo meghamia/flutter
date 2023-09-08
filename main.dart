@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:untitled/Login_Page.dart';
-import 'package:untitled/Text_cont.dart';
-import 'package:untitled/five.dart';
-import 'package:untitled/four.dart';
-import 'package:untitled/list_view.dart';
-import 'package:untitled/vestimate_ui.dart';
-import 'package:untitled/view_scroll.dart';
-
+import 'package:test1/BMI.dart';
+import 'package:test1/imagecropper.dart';
 
 void main() {
   runApp(
@@ -15,110 +8,88 @@ void main() {
 
 }
 
-
 class MainWidget extends StatelessWidget {
   const MainWidget({
     super.key,
   });
 
+
+
+
+
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
     return MaterialApp(
-      title: "Navigation Test",
+      title: 'Flutter Demo',
       theme: ThemeData(
-        textTheme: GoogleFonts.latoTextTheme(textTheme).copyWith(
-          //bodyMedium: GoogleFonts.aBeeZee(textStyle: textTheme.bodyMedium),)),
-            bodyLarge: GoogleFonts.redHatMono(textStyle: textTheme.bodyMedium),)),
-      home: MyNavigation(),
+
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
-class MyNavigation extends StatefulWidget{
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+
+
+  final String title;
+
   @override
-  State<StatefulWidget> createState() {
-    return _MyNavigation();
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+
+      _counter++;
+    });
   }
 
-}
-class _MyNavigation extends State<MyNavigation>{
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
-        title:Text("Navigation Tutorial"),
+
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+
+        title: Text(widget.title),
       ),
       body: Center(
-        child:Column(
+
+        child: Column(
           children:[
-          ElevatedButton(
-            child:Text("press Here"),
-            onPressed:
-                () => Navigator.push(context,
-              MaterialPageRoute(builder: (context) => MyList()),
-
-            ),
+            ElevatedButton(
+              child: Text("click here"),
+                onPressed:
+                   ()=> Navigator.push(context,
+                     MaterialPageRoute(builder: (context) => Imagecropper()),
           ),
+      ),
             ElevatedButton(
-              child:Text("tap here"),
+              child: Text("Calculate BMI"),
               onPressed:
-                  () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => MyList1()),
-
+                  ()=> Navigator.push(context,
+                MaterialPageRoute(builder: (context) => BMIcalculator()),
               ),
-            ),
-            ElevatedButton(
-              child:Text("click here"),
-              onPressed:
-                  () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) =>Scrolllist()),
-
-              ),
-            ),
-            ElevatedButton(
-              child:Text("click me"),
-              onPressed:
-                  () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) =>scrollpage()),
-
-              ),
-            ),
-            ElevatedButton(
-              child:Text("click me"),
-              onPressed:
-                  () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => VestimateApp()),
-
-              ),
-            ),
-            ElevatedButton(
-              child:Text("click me"),
-              onPressed:
-                  () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => LoginApp()),
-
-              ),
-            ),ElevatedButton(
-              child:Text("click me"),
-              onPressed:
-                  () => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => MyText()),
-
-              ),
-            ),
-
-
-
-
-
-
-
+            )
           ]
         )
 
-    ),
 
-    );
+        ),
+      );
+     // This trailing comma makes auto-formatting nicer for build methods.
   }
 }
+
+
+
 
